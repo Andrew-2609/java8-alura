@@ -15,7 +15,7 @@ public class OrdenaString {
 
         palavras.sort(new ComparadorPorTamanho());
 
-        System.out.println(palavras);
+        palavras.forEach(new ImprimeNaLinha());
 
     }
 }
