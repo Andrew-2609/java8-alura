@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 
+@SuppressWarnings({"Convert2MethodRef", "ComparatorCombinators"})
 public class OrdenaString {
     public static void main(String[] args) {
 
@@ -13,9 +14,9 @@ public class OrdenaString {
         palavras.add("Portfólio");
         palavras.add("Ajax");
 
-        palavras.sort(new ComparadorPorTamanho());
+        palavras.sort((p1, p2) -> p1.compareTo(p2));
 
-        palavras.forEach(new ImprimeNaLinha());
+        palavras.forEach(p -> System.out.println(p));
 
     }
 }
