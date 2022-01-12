@@ -3,6 +3,7 @@ package com.ndrewcoding;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class OrdenaString {
     public static void main(String[] args) {
@@ -17,6 +18,15 @@ public class OrdenaString {
         System.out.println(palavras);
 
     }
+}
+
+class ImprimeNaLinha implements Consumer<String> {
+
+    @Override
+    public void accept(String s) {
+        System.out.println(s);
+    }
+
 }
 
 class ComparadorPorTamanho implements Comparator<String> {
