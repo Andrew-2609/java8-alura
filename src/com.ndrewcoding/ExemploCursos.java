@@ -1,8 +1,11 @@
 package com.ndrewcoding;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 class Curso {
@@ -53,12 +56,21 @@ public class ExemploCursos {
         System.out.println(totalDeAlunos);
 
         cursos = cursos.stream()
-                .filter(curso -> curso.getQuantidadeDeAlunos() > 75)
+                .filter(curso -> curso.getQuantidadeDeAlunos() > 45)
                 .collect(Collectors.toList())
         ;
 
-        System.out.println("Cursos com mais de 75 alunos:");
+        System.out.println("Cursos com mais de 45 alunos:");
         cursos.forEach(curso -> System.out.println(curso.getNome()));
+
+        System.out.println("Convertendo lista de Cursos para um Map e exibindo-o:");
+        cursos.stream()
+                .collect(Collectors.toMap(
+                        Curso::getNome,
+                        Curso::getQuantidadeDeAlunos
+                ))
+                .forEach((nome, qtd) -> System.out.println("O curso " + nome + " tem " + qtd + " alunos."))
+        ;
 
     }
 }
