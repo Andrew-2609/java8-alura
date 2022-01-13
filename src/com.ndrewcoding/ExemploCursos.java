@@ -6,8 +6,8 @@ import java.util.List;
 
 class Curso {
 
-    private String nome;
-    private int quantidadeDeAlunos;
+    private final String nome;
+    private final int quantidadeDeAlunos;
 
     public Curso(String nome, int quantidadeDeAlunos) {
         this.nome = nome;
@@ -39,7 +39,12 @@ public class ExemploCursos {
 
         cursos.sort(Comparator.comparing(Curso::getQuantidadeDeAlunos));
 
-        cursos.forEach(System.out::println);
+        cursos.stream()
+                .filter(curso -> curso.getQuantidadeDeAlunos() > 40)
+                .forEach(curso -> System.out.println(curso.getNome()))
+        ;
+
+        /*cursos.forEach(System.out::println);*/
 
     }
 }
