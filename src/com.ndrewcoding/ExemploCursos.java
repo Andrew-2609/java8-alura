@@ -39,11 +39,17 @@ public class ExemploCursos {
 
         cursos.sort(Comparator.comparing(Curso::getQuantidadeDeAlunos));
 
+        System.out.println("Quantidade de alunos dos Cursos que possuem mais de 30 alunos:");
         cursos.stream()
                 .map(Curso::getQuantidadeDeAlunos)
                 .filter(quantidadeDeAlunos -> quantidadeDeAlunos > 40)
                 .forEach(System.out::println)
         ;
+
+        System.out.println("Total de alunos de todos os cursos:");
+        int totalDeAlunos = cursos.stream()
+                .mapToInt(Curso::getQuantidadeDeAlunos).sum();
+        System.out.println(totalDeAlunos);
 
         /*cursos.forEach(System.out::println);*/
 
