@@ -3,6 +3,7 @@ package com.ndrewcoding;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 class Curso {
 
@@ -51,7 +52,13 @@ public class ExemploCursos {
                 .mapToInt(Curso::getQuantidadeDeAlunos).sum();
         System.out.println(totalDeAlunos);
 
-        /*cursos.forEach(System.out::println);*/
+        cursos = cursos.stream()
+                .filter(curso -> curso.getQuantidadeDeAlunos() > 75)
+                .collect(Collectors.toList())
+        ;
+
+        System.out.println("Cursos com mais de 75 alunos:");
+        cursos.forEach(curso -> System.out.println(curso.getNome()));
 
     }
 }
