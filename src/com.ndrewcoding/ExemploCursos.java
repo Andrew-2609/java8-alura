@@ -40,8 +40,9 @@ public class ExemploCursos {
         cursos.sort(Comparator.comparing(Curso::getQuantidadeDeAlunos));
 
         cursos.stream()
-                .filter(curso -> curso.getQuantidadeDeAlunos() > 40)
-                .forEach(curso -> System.out.println(curso.getNome()))
+                .map(Curso::getQuantidadeDeAlunos)
+                .filter(quantidadeDeAlunos -> quantidadeDeAlunos > 40)
+                .forEach(System.out::println)
         ;
 
         /*cursos.forEach(System.out::println);*/
